@@ -1,0 +1,21 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-worker-deploy
+  labels:
+    app: voting-worker-deploy
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+        - name: worker-containerr
+          image: "chi91/worker-image"
+

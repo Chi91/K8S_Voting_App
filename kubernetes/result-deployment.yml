@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: voting-result-deploy
+  labels:
+    app: voting-result-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: result-app
+  template:
+    metadata:
+      labels:
+        app: result-app
+    spec:
+      containers:
+        - name: result-container
+          image: "chi91/result-images"
+          ports:
+            - containerPort: 80
